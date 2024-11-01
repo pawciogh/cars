@@ -1,5 +1,6 @@
 package com.example.cars.model;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.persistence.*;
 
 @Entity
@@ -8,6 +9,7 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Car make cannot be blank")
     private String make;
     private String model;
     @Column(name = "`year`")

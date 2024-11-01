@@ -2,6 +2,7 @@ package com.example.cars.controller;
 
 import com.example.cars.model.Car;
 import com.example.cars.service.CarService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -45,7 +46,7 @@ public class CarController {
     }
 
     @PostMapping
-    public ResponseEntity<String> addCar(@RequestBody Car newCar) {
+    public ResponseEntity<String> addCar(@Valid @RequestBody Car newCar) {
         try {
             Car addedCar = carService.addCar(newCar);
             return new ResponseEntity<>("Car added successfully with ID: " + addedCar.getId(), HttpStatus.CREATED);
